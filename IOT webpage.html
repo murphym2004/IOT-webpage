@@ -4,7 +4,7 @@ String homePagePart1 = F(R"=====(<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Servo Control WebServer</title>
-<meta http-equiv="refresh" content="3">
+
 <style>
 
 body 
@@ -29,11 +29,14 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 h1
 { 
-    background: linear-gradient(rgb(252, 29, 0),rgb(180, 97, 1),orange);
-    font-size: 50px;
+ 
+    border:none;
+    padding: 12px 24px;
+    font-size :40px;
+   
      font-family: Arial; 
      font-weight: 800;
-     color: rgb(255, 255, 255); 
+     color: rgb(255, 0, 0); 
      text-align: center; 
      margin: 10px 0 ;
 }
@@ -82,6 +85,65 @@ td,th{
     padding: 12px;
     text-align:center;
 }
+.toggle{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(rgb(252, 29, 0),rgb(180, 97, 1),orange);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  border-radius: 8px;
+  font-weight:bold;
+  transition:transform 0.2s,opacity 0.2s;
+}
+.white-mode{
+  background-color: white;
+  color: black;
+  h1
+{ 
+  
+    border:none;
+    padding: 12px 24px;
+    font-size :40px;
+   
+     font-family: Arial; 
+     font-weight: 800;
+     color: rgb(0, 0, 0); 
+     text-align: center; 
+     margin: 10px 0 ;
+}
+
+p
+{ 
+    font-size: 25px;
+     font-family: Arial;
+      color: rgb(10, 10, 10); 
+      text-align: center;
+      margin: 10px 0;
+ }
+
+table 
+{ 
+    font-size: 25px; 
+    padding: 8px; text-align: left; 
+    border-bottom: 1px solid #ddd; 
+    width: 60%;
+}
+button{
+    background: linear-gradient(rgb(0, 0, 0),rgb(0, 0, 0),rgb(0, 0, 0));
+    border:none;
+    padding: 12px 24px;
+    font-size :20px;
+    color: rgb(255, 241, 241);
+    border-radius :8px;
+    cursor:pointer;
+    font-weight: bold;
+    transition:transform 0.2s,opacity 0.2s;
+    margin:5px ;
+}
+}
 </style>
 </head>
 <body>
@@ -112,6 +174,12 @@ td,th{
   }
   function RFIDOFF() {
     fetch("/rfidoff").then(response => response.text()).then(alert);
+  }
+</script>
+<button class="toggle"onclick="toggletheme()">TOGGLE DARK/light MODE</button>
+<script>
+  function  toggletheme(){
+    document.body.classList.toggle("white-mode")
   }
 </script>
 
