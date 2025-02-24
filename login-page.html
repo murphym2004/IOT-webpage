@@ -121,29 +121,50 @@ section a {
         <div class="login-header">
             <header>login</header>
         </div>
-        <div class="input-box">
-           <input type="text" class="input-field" placeholder="Email" autocomplete="off" required> 
-        </div>
-        <div class="input-box">
-            <input type="password" class="input-field" placeholder="password" autocomplete="off" required> 
-         </div>
-         <div class="forgot">
-            <section>
-                <input type="checkbox" id="check">
-                <label for="check">remember me</label>
-            </section>
-            <section>
-                <a href="#">forgot password</a>
-            </section>
-        </div>
-         <div class="input-submit">
-                <button class="sumit-btn" id="submit"></button>
-                <label for="submit">sign in</label>
+        <form id="loginform">
+            <div class="input-box">
+                <input type="text" id="username"class="input-field" placeholder="username"  required> 
+             </div>
+             <div class="input-box">
+                 <input type="password" id="password"class="input-field" placeholder="password"  required> 
+              </div>
+              <div class="forgot">
+                 <section>
+                     <input type="checkbox" id="check">
+                     <label for="check">remember me</label>
+                 </section>
+                 <section>
+                     <a href="#">forgot password</a>
+                 </section>
+             </div>
+              <div class="input-submit">
+                     <button class="sumit-btn" id="submit"></button>
+                     <label for="submit">sign in</label>
+     
+              </div>
+            </form>
+              <div class="sign-up-link">
+                 <p>dont have an account?<a href="#">sign up</a></p>
+              </div>
+       
+        
+        <script>
+           document.getElementById("loginform").addEventListener("submit", function(event){
+    event.preventDefault();
 
-         </div>
-         <div class="sign-up-link">
-            <p>dont have an account?<a href="#">sign up</a></p>
-         </div>
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    const web_usr_name = "matt";
+    const web_pw = "123456";
+    if(username === web_usr_name && password === web_pw){
+        window.location.href = "IOT webpage.html";
+    }
+    else{
+        alert("invalid credentials");
+    }
+});
+
+        </script>
         
     </div>
 </body>
