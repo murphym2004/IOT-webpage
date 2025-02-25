@@ -84,6 +84,18 @@ button:hover{
     transform:scale(1.10);
     opacity: 0.9;
 }
+.rfid-log {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: rgb(243, 3, 3);
+    padding: 10px;
+    overflow-y: auto;
+}
+
 table{
    width: 80%; 
    border-collapse: collapse;
@@ -159,6 +171,11 @@ button{
 </style>
 </head>
 <body>
+  <div class="rfid-log">
+    <h3>RFID Log</h3>
+    <ul id="rfid-list"></ul>
+</div>
+
 <div class="flex-Container">
 <h1>Servo Control Website</h1>
 <p>Welcome to my website where you can control the servo.</p>
@@ -202,6 +219,20 @@ button{
         fetch(`/setservo?angle=${value}`);
     }
 
+    setInterval(() => {
+    fetch("/sensor_status")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("servoValue").innerText = data.servo;
+        });
+}, 2000);
+function updateRFIDLog(card, status) {
+    const log = document.getElementById("rfid-list");
+    const entry = document.createElement("li");
+    entry.textContent = `Card ${card}: ${status}`;
+    log.prepend(entry);
+}
+
 </script>
 
 
@@ -212,11 +243,4 @@ String homePagePart2 = F(R"=====(</p>
 </div>
 
 </body></td><td></td></tr></table></div></body></html>)=====");
- things to add:
- 
- no page refresh 
- 
- sensor live status 
-
- fix design for phone 
  
