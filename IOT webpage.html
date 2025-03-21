@@ -9,16 +9,16 @@ String homePagePart1 = F(R"=====(<!DOCTYPE html>
 
 body 
 { 
-background-color: black;
-color:white;
+background-color: #2f2f2f; /* Softer dark gray background for dark mode */
+color: #f0f0f0; /* Light text for readability */
 text-align: center;
 margin: 0;
 padding: 0;
 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-background-image: url('n1.jpg'); 
+
 background-size: cover; 
 background-position: center; 
- background-repeat: no-repeat; }
+background-repeat: no-repeat; }
 
 .Container
 { 
@@ -32,16 +32,14 @@ background-position: center;
 
 h1
 { 
- 
     border:none;
     padding: 12px 24px;
     font-size :40px;
-   
-     font-family: Arial; 
-     font-weight: 800;
-     color: rgb(255, 0, 0); 
-     text-align: center; 
-     margin: 10px 0 ;
+    font-family: Arial; 
+    font-weight: 800;
+    color: rgb(255, 140, 0); /* Vibrant orange color for title */
+    text-align: center; 
+    margin: 10px 0 ;
 }
 .servo-container{
   position: fixed;
@@ -55,10 +53,10 @@ h1
 p
 { 
     font-size: 25px;
-     font-family: Arial;
-      color: rgb(255, 21, 21); 
-      text-align: center;
-      margin: 10px 0;
+    font-family: Arial;
+    color: #f0f0f0; /* Light gray text for better contrast */
+    text-align: center;
+    margin: 10px 0;
  }
 
 table 
@@ -69,7 +67,7 @@ table
     width: 60%;
 }
 button{
-    background: linear-gradient(rgb(252, 29, 0),rgb(180, 97, 1),orange);
+    background: linear-gradient(rgb(255, 90, 0), rgb(255, 150, 50), rgb(255, 170, 0)); /* Softer gradient for button */
     border:none;
     padding: 12px 24px;
     font-size :20px;
@@ -78,11 +76,12 @@ button{
     cursor:pointer;
     font-weight: bold;
     transition:transform 0.2s,opacity 0.2s;
-    margin:5px ;
+    margin:10px;  
 }
 button:hover{
     transform:scale(1.10);
     opacity: 0.9;
+    background: linear-gradient(rgb(255, 120, 0), rgb(255, 180, 80), rgb(255, 200, 50)); /* Lighter gradient on hover */
 }
 .rfid-log {
     position: fixed;
@@ -112,7 +111,7 @@ td,th{
   position: absolute;
   top: 10px;
   right: 10px;
-  background: linear-gradient(rgb(252, 29, 0),rgb(180, 97, 1),orange);
+  background: linear-gradient(rgb(255, 90, 0), rgb(255, 150, 50), rgb(255, 170, 0)); /* Same gradient as button */
   border: none;
   padding: 10px 20px;
   font-size: 16px;
@@ -121,31 +120,38 @@ td,th{
   font-weight:bold;
   transition:transform 0.2s,opacity 0.2s;
 }
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 15px; 
+    margin-top: 20px;
+}
+
 .white-mode{
-  background-color: white;
+  background-color: #f0f0f0; /* Light background for light mode */
   color: black;
 
 h1
 { 
-  
     border:none;
     padding: 12px 24px;
     font-size :40px;
-   
-     font-family: Arial; 
-     font-weight: 800;
-     color: rgb(0, 0, 0); 
-     text-align: center; 
-     margin: 10px 0 ;
+    font-family: Arial; 
+    font-weight: 800;
+    color: rgb(0, 102, 204); /* Blue color for title in light mode */
+    text-align: center; 
+    margin: 10px 0 ;
 }
 
 p
 { 
     font-size: 25px;
-     font-family: Arial;
-      color: rgb(0, 0, 0); 
-      text-align: center;
-      margin: 10px 0;
+    font-family: Arial;
+    color: rgb(0, 0, 0); /* Black text in light mode */
+    text-align: center;
+    margin: 10px 0;
  }
 
 table 
@@ -156,26 +162,27 @@ table
     width: 60%;
 }
 button{
-    background: linear-gradient(rgb(0, 0, 0),rgb(0, 0, 0),rgb(0, 0, 0));
+    background: linear-gradient(rgb(0, 180, 255), rgb(0, 150, 255), rgb(30, 144, 255));
     border:none;
     padding: 12px 24px;
     font-size :20px;
-    color: rgb(255, 241, 241);
+    color: white;
     border-radius :8px;
     cursor:pointer;
     font-weight: bold;
     transition:transform 0.2s,opacity 0.2s;
-    margin:5px ;
+    margin:10px;  
+}
+button:hover{
+    transform:scale(1.10);
+    opacity: 0.9;
+    background: linear-gradient(rgb(0, 200, 255), rgb(0, 180, 255), rgb(70, 130, 180)); /* Hover effect for more visibility in light mode */
 }
 }
 </style>
 </head>
 <body>
-  <div class="rfid-log">
-    <h3>RFID Log</h3>
-    <ul id="rfid-list"></ul>
-</div>
-
+  
 <div class="flex-Container">
 <h1>Servo Control Website</h1>
 <p>Welcome to my website where you can control the servo.</p>
@@ -186,11 +193,13 @@ button{
       fetch("/turnon").then(response => response.text()).then(alert);
     }
   </script>
+<div class="button-container">
+  <button onclick="pirON()">PIR ON</button>
+  <button onclick="pirOFF()">PIR OFF</button>
+  <button onclick="RFIDON()">RFID ON</button>
+  <button onclick="RFIDOFF()">RFID OFF</button>
+</div>
 
- <button onclick="pirON()">PIR ON</button>
-<button onclick="pirOFF()">PIR OFF</button>
-<button onclick="RFIDON()">RFID ON</button>
-<button onclick="RFIDOFF()">RFID OFF</button>
 <script>
   function pirON() {
     fetch("/piron").then(response => response.text()).then(alert);
@@ -226,17 +235,12 @@ button{
             document.getElementById("servoValue").innerText = data.servo;
         });
 }, 2000);
-function updateRFIDLog(card, status) {
-    const log = document.getElementById("rfid-list");
-    const entry = document.createElement("li");
-    entry.textContent = `Card ${card}: ${status}`;
-    log.prepend(entry);
-}
+
 
 </script>
 
 
-  <p>Current Servo Status:%s
+  <p>Current Servo Status:%s</p>
 </html>)=====");
 
 String homePagePart2 = F(R"=====(</p>
