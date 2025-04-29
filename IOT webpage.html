@@ -7,82 +7,84 @@ String homePagePart1 = F(R"=====(<!DOCTYPE html>
 
 <style>
 
-body 
-{ 
-background-color: #2f2f2f; /* Softer dark gray background for dark mode */
-color: #f0f0f0; /* Light text for readability */
-text-align: center;
-margin: 0;
-padding: 0;
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+body {
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
 
-background-size: cover; 
-background-position: center; 
-background-repeat: no-repeat; }
-
-.Container
-{ 
-    display: flex; 
+.Container {
+    display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     min-height: 90vh;
     padding: 20px 0;
 }
 
-h1
-{ 
-    border:none;
+h1 {
+    border: none;
     padding: 12px 24px;
-    font-size :40px;
+    font-size: 40px;
     font-family: Arial; 
     font-weight: 800;
-    color: rgb(255, 140, 0); /* Vibrant orange color for title */
+    color: rgb(255, 69, 0);  /* Warm Red */
     text-align: center; 
-    margin: 10px 0 ;
+    margin: 10px 0;
 }
-.servo-container{
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 100vh;
-  background-color: #444;
-  box-shadow: -2px 0px 10px rgba(0,0,0,0.5);
+
+.servo-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: rgba(68, 68, 68, 0.9); /* Slight transparency */
+    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.5);
 }
-p
-{ 
+
+p {
     font-size: 25px;
     font-family: Arial;
-    color: #f0f0f0; /* Light gray text for better contrast */
+    color: rgb(255, 105, 0); /* Orange */
     text-align: center;
     margin: 10px 0;
- }
+}
 
-table 
-{ 
-    font-size: 25px; 
-    padding: 8px; text-align: left; 
+table {
+    font-size: 25px;
+    padding: 8px; 
+    text-align: left; 
     border-bottom: 1px solid #ddd; 
     width: 60%;
+    background-color: rgba(255, 255, 255, 0.2); /* Transparent background for the table */
 }
-button{
-    background: linear-gradient(rgb(255, 90, 0), rgb(255, 150, 50), rgb(255, 170, 0)); /* Softer gradient for button */
-    border:none;
+
+button {
+    background: linear-gradient(45deg, rgb(255, 69, 0), rgb(255, 140, 0), orange);
+    border: none;
     padding: 12px 24px;
-    font-size :20px;
+    font-size: 20px;
     color: white;
-    border-radius :8px;
-    cursor:pointer;
+    border-radius: 8px;
+    cursor: pointer;
     font-weight: bold;
-    transition:transform 0.2s,opacity 0.2s;
-    margin:10px;  
+    transition: transform 0.2s, opacity 0.2s;
+    margin: 5px;
 }
-button:hover{
-    transform:scale(1.10);
+
+button:hover {
+    transform: scale(1.10);
     opacity: 0.9;
-    background: linear-gradient(rgb(255, 120, 0), rgb(255, 180, 80), rgb(255, 200, 50)); /* Lighter gradient on hover */
 }
+
 .rfid-log {
     position: fixed;
     left: 0;
@@ -95,90 +97,89 @@ button:hover{
     overflow-y: auto;
 }
 
-table{
-   width: 80%; 
-   border-collapse: collapse;
-   margin-top: 20px;
-   font-size: 22px;
-   border: 1px solid grey;
+table {
+    width: 80%; 
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 22px;
+    border: 1px solid grey;
 }
-td,th{
-    border:1px solid grey;
+
+td, th {
+    border: 1px solid grey;
     padding: 12px;
-    text-align:center;
+    text-align: center;
 }
-.toggle{
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: linear-gradient(rgb(255, 90, 0), rgb(255, 150, 50), rgb(255, 170, 0)); /* Same gradient as button */
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  color: white;
-  border-radius: 8px;
-  font-weight:bold;
-  transition:transform 0.2s,opacity 0.2s;
+
+.toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(45deg, rgb(255, 69, 0), rgb(255, 140, 0), orange);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: transform 0.2s, opacity 0.2s;
 }
+
 .button-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap; 
-    gap: 15px; 
-    margin-top: 20px;
+    flex-wrap: nowrap;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
 }
 
-.white-mode{
-  background-color: #f0f0f0; /* Light background for light mode */
-  color: black;
+.white-mode {
+    background-color: white;
+    color: black;
+}
 
-h1
-{ 
-    border:none;
+.white-mode h1 {
+    border: none;
     padding: 12px 24px;
-    font-size :40px;
-    font-family: Arial; 
+    font-size: 40px;
+    font-family: Arial;
     font-weight: 800;
-    color: rgb(0, 102, 204); /* Blue color for title in light mode */
+    color: rgb(0, 0, 0);  /* Black */
     text-align: center; 
-    margin: 10px 0 ;
+    margin: 10px 0;
 }
 
-p
-{ 
+.white-mode p {
     font-size: 25px;
     font-family: Arial;
-    color: rgb(0, 0, 0); /* Black text in light mode */
+    color: rgb(0, 0, 0); /* Black text */
     text-align: center;
     margin: 10px 0;
- }
+}
 
-table 
-{ 
-    font-size: 25px; 
-    padding: 8px; text-align: left; 
-    border-bottom: 1px solid #ddd; 
+.white-mode table {
+    font-size: 25px;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
     width: 60%;
 }
-button{
-    background: linear-gradient(rgb(0, 180, 255), rgb(0, 150, 255), rgb(30, 144, 255));
-    border:none;
+
+.white-mode button {
+    background: linear-gradient(45deg, rgb(0, 0, 0), rgb(50, 50, 50), rgb(100, 100, 100));
+    border: none;
     padding: 12px 24px;
-    font-size :20px;
-    color: white;
-    border-radius :8px;
-    cursor:pointer;
+    font-size: 20px;
+    color: rgb(255, 241, 241);
+    border-radius: 8px;
+    cursor: pointer;
     font-weight: bold;
-    transition:transform 0.2s,opacity 0.2s;
-    margin:10px;  
+    transition: transform 0.2s, opacity 0.2s;
+    margin: 5px;
 }
-button:hover{
-    transform:scale(1.10);
-    opacity: 0.9;
-    background: linear-gradient(rgb(0, 200, 255), rgb(0, 180, 255), rgb(70, 130, 180)); /* Hover effect for more visibility in light mode */
-}
-}
+
 </style>
 </head>
 <body>
@@ -198,6 +199,7 @@ button:hover{
   <button onclick="pirOFF()">PIR OFF</button>
   <button onclick="RFIDON()">RFID ON</button>
   <button onclick="RFIDOFF()">RFID OFF</button>
+  <button class="toggle" onclick="toggletheme()">Toggle Theme</button>
 </div>
 
 <script>
@@ -215,9 +217,6 @@ button:hover{
   }
 </script>
 <p>Adjust Servo Position</p>
-<input type="range" id="servoSlider" min="0" max="180" value="90" oninput="updateServo(this.value)">
-<p>Current Position: <span id="servoValue">90</span>°</p>
-<button class="toggle"onclick="toggletheme()">TOGGLE DARK/light MODE</button>
 <script>
   function  toggletheme(){
     document.body.classList.toggle("white-mode")
@@ -234,17 +233,18 @@ button:hover{
         .then(data => {
             document.getElementById("servoValue").innerText = data.servo;
         });
-}, 2000);
+}, 5000);
 
 
 </script>
 
 
-  <p>Current Servo Status:%s</p>
+ 
 </html>)=====");
 
 String homePagePart2 = F(R"=====(</p>
 </div>
 
 </body></td><td></td></tr></table></div></body></html>)=====");
+ 
  
